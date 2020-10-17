@@ -9,7 +9,7 @@ const App = () => {
   const fetchAdvice = () => {
     axios.get('https://api.adviceslip.com/advice')
       .then(response => {
-        const {advice} = response.data.slip
+        const { advice } = response.data.slip
         console.log(advice)
 
         setAdvice(advice)
@@ -19,12 +19,15 @@ const App = () => {
 
   useEffect(() => {
     fetchAdvice()
-  }, [advice])
+  }, [])
 
 
   return (
     <div className="App">
-      {advice}
+      <div className="card">
+        <h1 className="heading">{advice}</h1>
+        <button className='button' onClick={fetchAdvice}><span>GIVE ME ADVICE</span></button>
+      </div>
     </div>
   );
 }
